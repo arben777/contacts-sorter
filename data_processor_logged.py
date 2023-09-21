@@ -1,5 +1,6 @@
 
 import logging
+from openai_caller_logged import OpenAICallerLogged
 
 class DataProcessorLogged:
     @staticmethod

@@ -1,7 +1,7 @@
-
+from Contact import Contact , CategorizedContact
 import os
 import pandas as pd
-import logging
+import logging 
 
 class FileHandlerLogged:
     @staticmethod

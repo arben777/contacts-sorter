@@ -1,11 +1,12 @@
-
+from Contact import Contact , CategorizedContact
 import pandas as pd
 import os
+from typing import List
 
 class FileHandler:
 
     @staticmethod
-    def read_files(directory: str) -> [Contact]:
+    def read_files(directory: str) -> List[Contact]:
         data = []
         for file in os.listdir(directory):
             if file.endswith(('.csv', '.xls', '.xlsx')):
@@ -17,7 +18,7 @@ class FileHandler:
         return data
 
     @staticmethod
-    def write_to_excel(categorized_contacts: [CategorizedContact], output_file: str):
+    def write_to_excel(categorized_contacts: List[CategorizedContact], output_file: str):
         categorized_data = {}
         for contact in categorized_contacts:
             category = contact.industry
