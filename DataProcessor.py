@@ -1,7 +1,6 @@
 from Contact import Contact , CategorizedContact
 from typing import List
 from OpenAICaller import OpenAICaller
-from Contact import contact , CategorizedContact
 
 class DataProcessor:
 

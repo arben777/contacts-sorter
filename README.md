@@ -31,6 +31,3 @@ The Contact Sorter program reads contact data from various file formats, categor
    python main.py
    ```
 3. The program will read the contact files, categorize and sort the contacts, and then write the sorted contacts to a master Excel sheet named `master_sheet.xlsx`.
-
-## Note
-For real-world usage, replace the mock GPT function call in `OpenAICaller` with a real API call to GPT-4.
