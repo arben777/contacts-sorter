@@ -18,13 +18,13 @@ class OpenAICaller:
             functions = [
                 {
                     "name": "categorize_contact",
-                    "description": "Categorize a contact based on its details",
+                    "description": "Get the industry, organization, and seniority from contact information",
                     "parameters": {
                         "type": "object",
                         "properties": {
                             "contact": {
-                                "type": "object",
-                                "description": "The contact to be categorized"
+                                "type": "string",
+                                "description": "The contact to be categorized" ## Fix the GPT fucntion calling  
                             }
                         },
                         "required": ["contact"]
@@ -40,7 +40,7 @@ class OpenAICaller:
             # Make the initial API call to categorize the contact
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo-0613",
-                messages=[{"role": "user", "content": f"categorize_contact({contact.to_dict()})"}],
+                messages=[{"role": "user", "content": f"What is the industry, organization, and seniority of this contact categorize_contact({contact.to_dict()})?"}],
                 functions=functions
             )
 
@@ -48,6 +48,9 @@ class OpenAICaller:
             function_call = response['choices'][0]['message'].get('function_call')
             if not function_call:
                 raise ValueError("The model did not generate a function call")
+
+            # Print the function call
+            print(f"Function Call: {function_call}")
 
             attributes = json.loads(function_call['arguments'])
             industry = attributes.get('industry')
